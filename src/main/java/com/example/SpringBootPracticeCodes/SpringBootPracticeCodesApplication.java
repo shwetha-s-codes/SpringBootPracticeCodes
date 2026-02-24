@@ -1,5 +1,6 @@
 package com.example.SpringBootPracticeCodes;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootPracticeCodesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootPracticeCodesApplication.class, args);
+
+        ApplicationContext  context=SpringApplication.run(SpringBootPracticeCodesApplication.class, args);
+        AssetController ac=context.getBean(AssetController.class);
+
+        System.out.println( ac.getStock());
+
 	}
 
 }
