@@ -16,8 +16,12 @@ public class StockController {
 
     @GetMapping("/stocks")
 
-    ArrayList<Stock> getStock()
+    ArrayList<Stock> getStock(@RequestParam(required = false) String name)
     {
+        if(name!=null){
+            return  stockService.getAllStockByName(name);
+        }
+
         return stockService.getAllStock();
     }
     //Get stock info of particular stock

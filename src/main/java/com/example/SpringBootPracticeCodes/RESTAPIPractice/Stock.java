@@ -1,9 +1,14 @@
 package com.example.SpringBootPracticeCodes.RESTAPIPractice;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.springframework.stereotype.Component;
 
-
+@Entity
+@Table(name = "stocks")
 public class Stock {
+    @Id
     private int id;
     private String  name;
     private String ticker;
