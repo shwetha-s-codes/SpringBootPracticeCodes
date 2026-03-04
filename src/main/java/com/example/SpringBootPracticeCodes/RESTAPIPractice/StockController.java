@@ -1,5 +1,6 @@
 package com.example.SpringBootPracticeCodes.RESTAPIPractice;
 
+import com.example.SpringBootPracticeCodes.RESTAPIPractice.Exceptions.IDNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +30,7 @@ public class StockController {
 
     @GetMapping("/stocks/{id}")
 
-    Optional<Stock> getStockById(@PathVariable int id)
-    {
+   Stock getStockById(@PathVariable int id) throws IDNotFoundException {
 
         return stockService.getStockByID(id);
     }

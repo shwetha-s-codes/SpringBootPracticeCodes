@@ -1,5 +1,6 @@
 package com.example.SpringBootPracticeCodes.RESTAPIPractice;
 
+import com.example.SpringBootPracticeCodes.RESTAPIPractice.Exceptions.IDNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,6 @@ public class StockService {
 
     //private ArrayList<Stock> listOfStocks=new ArrayList<>();
     public ArrayList<Stock> getAllStock(){
-       //return listOfStocks;
         return (ArrayList<Stock>) stockRepository.findAll();
 
     }
@@ -30,14 +30,8 @@ public class StockService {
         return  stockRepository.findByName(name);
 
     }
-    public Optional<Stock> getStockByID(int ID){
-        /*for(Stock s: listOfStocks){
-            if(s.getId()==ID)
-                return s;
-        }
-        return null;*/
-
-        return stockRepository.findById(ID);
+    public Stock getStockByID(int ID) throws IDNotFoundException {
+        return stockRepository.findById(ID).orElseThrow(()->new IDNotFoundException("ID not found"));
     }
     // Adding Stock
     public void addStock(Stock stock){
