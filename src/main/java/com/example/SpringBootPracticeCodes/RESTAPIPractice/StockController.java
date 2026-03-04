@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 public class StockController {
@@ -28,7 +29,7 @@ public class StockController {
 
     @GetMapping("/stocks/{id}")
 
-    Stock getStockById(@PathVariable int id)
+    Optional<Stock> getStockById(@PathVariable int id)
     {
 
         return stockService.getStockByID(id);
